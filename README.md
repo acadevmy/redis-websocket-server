@@ -1,10 +1,11 @@
 # Redis Patterns server
 
-# run project (docker)
+# Installing (docker)
+```
 docker-compose up
+```
 
-# debug 
-node --inspect-brk server.js
+check the redis server websocket at ws://127.0.0.1:8080
 
 # dependencies
 webSocket: https://github.com/websockets/ws
