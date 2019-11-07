@@ -1,0 +1,20 @@
+{
+  "name": "redis-patterns-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "ioredis": "^4.14.1",
+    "uuid": "^3.3.2",
+    "ws": "^7.0.1"
+  },
+  "devDependencies": {
+    "@types/ioredis": "^4.0.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

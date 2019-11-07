@@ -1,0 +1,27 @@
+version: "3.5"
+services:
+
+  server:
+    image: node:12.9-alpine
+    command: sh -c "npm install && node server.js"
+    working_dir: /server
+    environment:
+      ENV: stage
+      REDIS_HOST: redis
+      ALLOWED_ORIGINS: "http://localhost,http://localhost:4200"
+    volumes:
+      - ./:/server
+    ports:
+      - '8080:8080'
+
+  redis:
+    image: redis:5
+    environment:
+      ENV: stage
+    volumes:
+      - redis_data:/data
+    ports:
+      - '6379:6379'
+
+volumes:
+  redis_data:
