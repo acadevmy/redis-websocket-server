@@ -6,6 +6,7 @@ docker-compose up
 # debug 
 node --inspect-brk server.js
 
-# dependecies
+# dependencies
 webSocket: https://github.com/websockets/ws
+
 ioredis: https://github.com/luin/ioredis
