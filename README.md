@@ -40,7 +40,7 @@ The response will be an object like:
     }
 
 ### Contribute
-If you wish to contribute please read CONTRIBUTING.md file.
+If you wish to contribute please read [CONTRIBUTING.md](https://github.com/acadevmy/redis-websocket-server/blob/master/CONTRIBUTING.md) file.
 Thanks for your future contributions!
 
 &nbsp;
