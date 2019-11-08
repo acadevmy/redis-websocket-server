@@ -1,4 +1,4 @@
-# REDIS WebSocket Server
+# REDIS WEBSOCKET SERVER
 ## A simple bridge to use [Redis](https://redis.io/) in a WebSocket way!
 
 _REDIS WebSocket Server_ is a simple NodeJS script used as a bridge to interact with [Redis Server](https://redis.io/) via WebSocket.
