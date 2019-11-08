@@ -1,14 +1,12 @@
 const WebSocket = require('ws');
 const Redis = require("ioredis");
-const isAllow = require('./src/blacklist');
+const isAllow = require('./blacklist');
 
 const port = 8080;
-//https://github.com/websockets/ws/blob/master/doc/ws.md#new-websocketserveroptions-callback
 const wss = new WebSocket.Server({ 
   port: port,
   maxPayload: process.env.MAX_PAYLOAD ? process.env.MAX_PAYLOAD : 1000,
   verifyClient: function(info) {
-    // console.log(process.env);
     console.log('Origin:', info.origin);
     let allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS : 'origin-unknown';
     allowedOrigins = allowedOrigins.split(',');
@@ -59,8 +57,7 @@ wss.on('connection', function connection(ws) {
   ws.on('pong', heartbeat);
   ws.on('ping', console.info);
 
-  // https://github.com/websockets/ws/issues/1417
-  ws.on('error', console.error);
+  ws.on('error', console.error); // https://github.com/websockets/ws/issues/1417
 
   ws.on('open', function open() {
     console.log('open');
@@ -76,7 +73,7 @@ wss.on('connection', function connection(ws) {
     let client;
 
     try {
-      request = JSON.parse(data);//from string to object
+      request = JSON.parse(data);
     } catch (ex) {
       response.command = 'unknown';
       response.output = 'Invalid JSON';
@@ -95,8 +92,7 @@ wss.on('connection', function connection(ws) {
       const command = commandArray[0];
       const args = commandArray.slice(1);
   
-      response.command = commandString;//early set
-  
+      response.command = commandString;
       if(!isAllow(command)) {
         throw new Error('Command not allowed'); 
       }
@@ -106,15 +102,12 @@ wss.on('connection', function connection(ws) {
       response.status = 'ok';
 
     } catch (ex) {
-      // console.log(ex);
       console.log('Exception on send_command');
       response.output = ex.message;
       response.status = 'error';
     } finally {
       client.quit();
-      //send response
       return ws.send(JSON.stringify(response));
     }
-
   });
 });

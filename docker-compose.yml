@@ -3,7 +3,7 @@ services:
 
   server:
     image: node:12.9-alpine
-    command: sh -c "npm install && node server.js"
+    command: sh -c "npm install && node src/server.js"
     working_dir: /server
     environment:
       ENV: stage
