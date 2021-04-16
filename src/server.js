@@ -88,7 +88,7 @@ wss.on('connection', function connection(ws) {
       });
 
       const commandString = request.command;
-      const commandArray = commandString.split(" ");
+      const commandArray = commandString.split(/(\w+|"[^"]+["])/g).filter(i => i.trim() !== '');
       const command = commandArray[0];
       const args = commandArray.slice(1);
   
